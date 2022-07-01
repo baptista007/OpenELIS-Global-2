@@ -1071,6 +1071,22 @@
 		<put-attribute name="patientEnhancedSearch"
 			value="/pages/patient/patientEnhancedSearch.jsp" />
 	</definition>
+
+	<definition name="samplePhysicalBatchListDefinition"
+		extends="baseDefinition">
+		<put-attribute name="body"
+			value="/pages/samplephysicalbatch/physicalBatchList.jsp" />
+		<put-attribute name="footer"
+			value="/pages/common/emptyPlaceHolder.jsp" />
+	</definition>
+	
+	<definition name="samplePhysicalBatchFormDefinition"
+		extends="baseDefinition">
+		<put-attribute name="body"
+			value="/pages/samplephysicalbatch/newPhysicalBatch.jsp" />
+		<put-attribute name="footer"
+			value="/pages/common/emptyPlaceHolder.jsp" />
+	</definition>
 </tiles-definitions>
 
 

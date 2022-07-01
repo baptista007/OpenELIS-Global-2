@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.9"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.9 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.9.xsd">
+	  <changeSet author="Baptista" id="1" runAlways="true">
+	    <preConditions onFail="MARK_RAN">
+	      	<sqlCheck expectedResult="0">
+	      		select count(*) from clinlims.menu where element_id = 'menu_sample_physical_batch_entry' ;
+    		</sqlCheck>
+	    </preConditions>
+	    <comment>
+	    	Fix physical batch menu entry
+    	</comment>
+	    <sql> 
+		 INSERT INTO clinlims.menu(id, parent_id, presentation_order, element_id, action_url, click_action, display_key, tool_tip_key, new_window, is_active)
+		    VALUES (nextval('clinlims.menu_seq'),(select id from clinlims.menu where element_id='menu_sample'),11,'menu_sample_physical_batch_entry','/SamplePhysicalBatchEntry',default,'banner.menu.SamplePhysicalBatchEntry','banner.menu.SamplePhysicalBatchEntry',default,default);
+		</sql>
+	  </changeSet>
+</databaseChangeLog>

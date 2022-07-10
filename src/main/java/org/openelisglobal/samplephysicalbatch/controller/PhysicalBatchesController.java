@@ -1,16 +1,15 @@
 package org.openelisglobal.samplephysicalbatch.controller;
 
-import java.lang.reflect.InvocationTargetException;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import org.openelisglobal.common.controller.BaseController;
 import org.openelisglobal.common.services.DisplayListService;
 import org.openelisglobal.common.services.DisplayListService.ListType;
-import org.openelisglobal.samplephysicalbatch.form.NewPhysicalBatchForm;
+import org.openelisglobal.samplephysicalbatch.form.PhysicalBatchViewForm;
 import org.openelisglobal.siteinformation.service.SiteInformationService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
@@ -19,9 +18,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-public class NewPhysicalBatchController extends BaseController {
+@Controller
+public class PhysicalBatchesController extends BaseController {
 
-    private static final String[] ALLOWED_FIELDS = new String[] {};
+    private static final String[] ALLOWED_FIELDS = new String[] {"batchNumber", "userSearch", "organizationSearch", "typeOfSample", "testID"};
 
     @Autowired
     SiteInformationService siteInformationService;
@@ -30,24 +30,33 @@ public class NewPhysicalBatchController extends BaseController {
     public void initBinder(WebDataBinder binder) {
         binder.setAllowedFields(ALLOWED_FIELDS);
     }
-
-    @RequestMapping(value = "/NewSamplePhysicalBatch", method = RequestMethod.GET)
-    public ModelAndView newPhysicalBatchEntry(HttpServletRequest request)
-            throws IllegalAccessException, InvocationTargetException, NoSuchMethodException {
-
-    	NewPhysicalBatchForm form = new NewPhysicalBatchForm();
-    	form.setReferralFacilitySelectionList(
+    
+    @RequestMapping(value = "/PhysicalBatches", method = RequestMethod.GET)
+    public ModelAndView showPhysicalBatches(HttpServletRequest request,
+            @ModelAttribute("command") @Valid PhysicalBatchViewForm form, BindingResult result) {
+        form.setReferralFacilitySelectionList(
                 DisplayListService.getInstance().getList(ListType.REFERRAL_ORGANIZATIONS));
         form.setTestSelectionList(DisplayListService.getInstance().getList(ListType.ORDERABLE_TESTS));
         form.setStatusSelectionList(DisplayListService.getInstance().getList(ListType.ELECTRONIC_ORDER_STATUSES));
-        
+
+//        if (form.getSearchType() != null) {
+//            List<ElectronicOrder> electronicOrders;
+//            List<ElectronicOrderDisplayItem> eOrderDisplayItems;
+//
+//            electronicOrders = electronicOrderService.searchForElectronicOrders(form);
+//            eOrderDisplayItems = convertToDisplayItem(electronicOrders, form.getUseAllInfo());
+//
+//            form.setSearchFinished(true);
+//            form.setEOrders(eOrderDisplayItems);
+//        }
+
         return findForward(FWD_SUCCESS, form);
     }
 
     @Override
     protected String findLocalForward(String forward) {
         if (FWD_SUCCESS.equals(forward)) {
-            return "samplePhysicalBatchFormDefinition";
+            return "physicalBatchViewDefinition";
         } else if (FWD_FAIL.equals(forward)) {
             return "homePageDefinition";
         } else {

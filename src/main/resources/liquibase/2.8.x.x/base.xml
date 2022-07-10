@@ -5,6 +5,6 @@
 	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
 	  http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
 
-	<include file="liquibase/2.8.x.x/create_sample_physical_batch.xml"/>
-	<include file="liquibase/2.8.x.x/create_sample_physical_batch_table.xml"/> 
+	<include file="liquibase/2.8.x.x/insert_physical_batches_menu_item.xml"/> 
+	<include file="liquibase/2.8.x.x/create_physical_batches_table.xml"/>
 </databaseChangeLog>

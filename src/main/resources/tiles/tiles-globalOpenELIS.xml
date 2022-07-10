@@ -1082,18 +1082,18 @@
 			value="/pages/patient/patientEnhancedSearch.jsp" />
 	</definition>
 
-	<definition name="samplePhysicalBatchListDefinition"
+	<definition name="physicalBatchViewDefinition"
 		extends="baseDefinition">
 		<put-attribute name="body"
-			value="/pages/samplephysicalbatch/physicalBatchList.jsp" />
+			value="/pages/samplephysicalbatch/physicalBatchView.jsp" />
 		<put-attribute name="footer"
 			value="/pages/common/emptyPlaceHolder.jsp" />
 	</definition>
 	
-	<definition name="samplePhysicalBatchFormDefinition"
+	<definition name="physicalBatchSetupDefinition"
 		extends="baseDefinition">
 		<put-attribute name="body"
-			value="/pages/samplephysicalbatch/newPhysicalBatch.jsp" />
+			value="/pages/samplephysicalbatch/physicalBatchSetup.jsp" />
 		<put-attribute name="footer"
 			value="/pages/common/emptyPlaceHolder.jsp" />
 	</definition>

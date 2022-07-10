@@ -5,10 +5,20 @@ import java.util.List;
 import org.openelisglobal.common.form.BaseForm;
 import org.openelisglobal.common.util.IdValuePair;
 
-public class PhysicalBatchSearchForm extends BaseForm {
+public class PhysicalBatchViewForm extends BaseForm {
 	public enum SearchType {
         IDENTIFIER, DATE_STATUS
     }
+
+    private String batchNumber;
+
+    private String userSearch;
+
+    private String organizationSearch;
+
+    private String typeOfSample;
+
+    private String testId;
 
     private SearchType searchType;
 
@@ -34,7 +44,7 @@ public class PhysicalBatchSearchForm extends BaseForm {
 
     private List<IdValuePair> statusSelectionList;
 
-    public PhysicalBatchSearchForm() {
+    public PhysicalBatchViewForm() {
         setFormName("PhysicalBatchSearchForm");
     }
 
@@ -76,6 +86,46 @@ public class PhysicalBatchSearchForm extends BaseForm {
 
     public void setTestIds(List<String> testIds) {
         this.testIds = testIds;
+    }
+
+    public String getBatchNumber() {
+        return batchNumber;
+    }
+
+    public void setBatchNumber(String batchNumber) {
+        this.batchNumber = batchNumber;
+    }
+
+    public String getUserSearch() {
+        return userSearch;
+    }
+
+    public void setUserSearch(String userSearch) {
+        this.userSearch = userSearch;
+    }
+
+    public String getOrganizationSearch() {
+        return organizationSearch;
+    }
+
+    public void setOrganizationSearch(String organizationSearch) {
+        this.organizationSearch = organizationSearch;
+    }
+
+    public String getTestId() {
+        return this.testId;
+    }
+
+    public void setTestId(String testId) {
+        this.testId = testId;
+    }
+
+    public String getTypeOfSample() {
+        return this.typeOfSample;
+    }
+
+    public void setTypeOfSample(String typeOfSample) {
+        this.typeOfSample = typeOfSample;
     }
 
     public String getStatusId() {

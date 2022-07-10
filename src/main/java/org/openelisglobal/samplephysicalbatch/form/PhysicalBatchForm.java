@@ -4,9 +4,8 @@ import java.util.List;
 
 import org.openelisglobal.common.form.BaseForm;
 import org.openelisglobal.common.util.IdValuePair;
-import org.openelisglobal.samplephysicalbatch.form.PhysicalBatchSearchForm.SearchType;
 
-public class NewPhysicalBatchForm extends BaseForm {
+public class PhysicalBatchForm extends BaseForm {
 	public enum SearchType {
         IDENTIFIER, DATE_STATUS
     }
@@ -35,8 +34,8 @@ public class NewPhysicalBatchForm extends BaseForm {
 
     private List<IdValuePair> statusSelectionList;
 
-    public NewPhysicalBatchForm() {
-        setFormName("NewPhysicalBatchForm");
+    public PhysicalBatchForm() {
+        setFormName("PhysicalBatchForm");
     }
 
     public String getSearchValue() {

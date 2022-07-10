@@ -5,7 +5,7 @@
 	  <changeSet author="Baptista" id="1" runAlways="true">
 	    <preConditions onFail="MARK_RAN">
 	      	<sqlCheck expectedResult="0">
-	      		select count(*) from clinlims.menu where element_id = 'menu_sample_physical_batch_entry' ;
+	      		select count(*) from clinlims.menu where element_id = 'menu_sample_physical_batches' ;
     		</sqlCheck>
 	    </preConditions>
 	    <comment>
@@ -13,7 +13,7 @@
     	</comment>
 	    <sql> 
 		 INSERT INTO clinlims.menu(id, parent_id, presentation_order, element_id, action_url, click_action, display_key, tool_tip_key, new_window, is_active)
-		    VALUES (nextval('clinlims.menu_seq'),(select id from clinlims.menu where element_id='menu_sample'),11,'menu_sample_physical_batch_entry','/SamplePhysicalBatchEntry',default,'banner.menu.SamplePhysicalBatchEntry','banner.menu.SamplePhysicalBatchEntry',default,default);
+		    VALUES (nextval('clinlims.menu_seq'),(select id from clinlims.menu where element_id='menu_sample'),11,'menu_sample_physical_batches','/PhysicalBatches',default,'banner.menu.PhysicalBatches','banner.menu.PhysicalBatches',default,default);
 		</sql>
 	  </changeSet>
 </databaseChangeLog>
